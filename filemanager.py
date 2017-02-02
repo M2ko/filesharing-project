@@ -26,7 +26,7 @@ def download(filename):
 def deleteFile(filename):
     pathtofile = globalpath + filename
     remove(pathtofile)
-    if globalpath == "/home/pi/root/":
+    if globalpath == "~/root/":
         return files()
     else:
         parts = globalpath.split('/')
@@ -41,7 +41,7 @@ def upload():
     if not file == None:
         if not exists(globalpath + file.filename):
             file.save(globalpath)
-            if globalpath == "/home/pi/root/":
+            if globalpath == "~/root/":
                 return files()
             else:
                 parts = globalpath.split('/')
@@ -57,7 +57,7 @@ def upload():
 
 @route("/<url:re:.+>")
 def files2(url):
-    path = "/home/pi/root/"
+    path = "~/root/"
     global globalpath
     path += url + "/"
     globalpath = path
@@ -85,7 +85,7 @@ def files2(url):
 @route("/")
 def files():
     global globalpath
-    path = "/home/pi/root/"
+    path = "~/root/"
     globalpath = path
     #onlyfiles=[f for f in listdir(projectPath+'/' + projectName) if isfile(join(projectPath+'/' + projectName, f))]
     all = []
